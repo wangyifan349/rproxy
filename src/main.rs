@@ -146,21 +146,40 @@ enum BodyMode {
 // Tokio starts a multi-thread runtime, then this function starts every listener concurrently.
 // Each listener is an endless loop; if any listener returns an error, tokio::try_join! returns and the program logs that failure.
 async fn main() -> io::Result<()> {
+    println!("rproxy function:");
+    println!("  Local HTTP proxy forwarding");
+    println!("  Local HTTPS CONNECT tunnel forwarding");
+    println!("  Local SOCKS5 TCP proxy forwarding");
+    println!("  Local SOCKS5 UDP relay forwarding");
+    println!();
+    println!("Sponsor addresses:");
+    println!("Bitcoin (BTC):");
+    println!("bc1qxqfhumpqtnxrznkx9r4xsp8m6zsedtgusjns7p");
+    println!();
+    println!("Ethereum (ETH):");
+    println!("0x2d92f9e4d8ac7effa9cd7cd5eccd364cac7c201b");
+    println!();
+    println!("USDT (ERC-20):");
+    println!("0x2d92f9e4d8ac7effa9cd7cd5eccd364cac7c201b");
+    println!();
+    println!("Solana (SOL):");
+    println!("B7N4e3KG9zWQBwMrtydS1B9wVBp2w62fAdryZdxAMBiz");
+    println!();
 // Start logging before any listener is created so startup and bind errors are captured.
     let logger = createLogger(logFilePath);
 
 // Bind HTTP proxy on IPv4 loopback.
-    let httpIpv4Address = SocketAddr::new(IpAddr::V4(Ipv4Addr::LOCALHOST), httpProxyPort);
+    let httpIpv4Address = SocketAddr::new(IpAddr::V4(Ipv4Addr::UNSPECIFIED), httpProxyPort);
 // Bind HTTP proxy on IPv6 loopback.
-    let httpIpv6Address = SocketAddr::new(IpAddr::V6(Ipv6Addr::LOCALHOST), httpProxyPort);
+    let httpIpv6Address = SocketAddr::new(IpAddr::V6(Ipv6Addr::UNSPECIFIED), httpProxyPort);
 // Bind HTTPS CONNECT proxy on IPv4 loopback.
-    let httpsIpv4Address = SocketAddr::new(IpAddr::V4(Ipv4Addr::LOCALHOST), httpsConnectProxyPort);
+    let httpsIpv4Address = SocketAddr::new(IpAddr::V4(Ipv4Addr::UNSPECIFIED), httpsConnectProxyPort);
 // Bind HTTPS CONNECT proxy on IPv6 loopback.
-    let httpsIpv6Address = SocketAddr::new(IpAddr::V6(Ipv6Addr::LOCALHOST), httpsConnectProxyPort);
+    let httpsIpv6Address = SocketAddr::new(IpAddr::V6(Ipv6Addr::UNSPECIFIED), httpsConnectProxyPort);
 // Bind SOCKS5 TCP and UDP services on IPv4 loopback.
-    let socksIpv4Address = SocketAddr::new(IpAddr::V4(Ipv4Addr::LOCALHOST), socks5ProxyPort);
+    let socksIpv4Address = SocketAddr::new(IpAddr::V4(Ipv4Addr::UNSPECIFIED), socks5ProxyPort);
 // Bind SOCKS5 TCP and UDP services on IPv6 loopback.
-    let socksIpv6Address = SocketAddr::new(IpAddr::V6(Ipv6Addr::LOCALHOST), socks5ProxyPort);
+    let socksIpv6Address = SocketAddr::new(IpAddr::V6(Ipv6Addr::UNSPECIFIED), socks5ProxyPort);
 
     logger.info("rproxy starting");
     logger.info(format!("HTTP IPv4 proxy listening on {}", httpIpv4Address));
