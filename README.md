@@ -143,8 +143,18 @@ You can also run the included deployment script:
 ```powershell
 git clone https://github.com/wangyifan349/rproxy.git
 cd rproxy
+cargo clean
 powershell -ExecutionPolicy Bypass -File .\scripts\check_build_run_windows_no_pdb.ps1
 .\target\release\rproxy.exe
+```
+
+```
+cargo clean
+$env:RUSTFLAGS = "-C debuginfo=0 -C strip=symbols"
+cargo fmt --check
+cargo clippy
+cargo check --all-targets --all-features
+cargo build --release
 ```
 
 ## Browser proxy configuration
@@ -181,14 +191,14 @@ The release profile is configured for smaller binaries:
 
 ```toml
 [profile.release]
-opt-level = "z"
-lto = true
-codegen-units = 1
-panic = "abort"
-strip = true
-debug = false
-incremental = false
-overflow-checks = false
+opt-level = "z"        # Optimize for binary size (smallest output, more aggressive than "s")
+lto = true             # Enable Link Time Optimization for cross-crate global optimizations
+codegen-units = 1      # Single codegen unit for maximum optimization at the cost of compile time
+panic = "abort"        # Abort on panic instead of unwinding; reduces binary size and improves performance
+strip = true           # Strip symbols and debug information from the final binary
+debug = false          # Disable debug information in release builds
+incremental = false    # Disable incremental compilation for cleaner and more optimized builds
+overflow-checks = false # Disable integer overflow checks for performance (assumes correctness is ensured)
 ```
 
 ## ☕ Buy Me a Coffee
