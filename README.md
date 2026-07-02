@@ -244,3 +244,11 @@ AGPL-3.0-only
 ```
 
 The full license text is included in the `LICENSE` file.
+
+
+## Transparent Proxy (Non-VPN)
+This project must not be treated as a VPN.
+It is a transparent proxy that performs protocol forwarding only and provides no security,
+privacy protection, or traffic obfuscation.
+All security properties depend entirely on the upstream protocols;
+the proxy itself does not add any encryption or access protection.
