@@ -212,7 +212,7 @@ Your support is never required, but it would be deeply appreciated. Thank you fo
 ### ₿ Bitcoin (BTC)
 
 ```text
-bc1qxqfhumpqtnxrznkx9r4xsp8m6zsedtgusjns7p
+bc1qwhzzk5tx07592vkf97rt8x8v0zdntad8lexnrgv3gdmecg8pfmhqzceedl
 ```
 
 ### ⟠ Ethereum (ETH)

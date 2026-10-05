@@ -154,7 +154,7 @@ async fn main() -> io::Result<()> {
     println!();
     println!("Sponsor addresses:");
     println!("Bitcoin (BTC):");
-    println!("bc1qxqfhumpqtnxrznkx9r4xsp8m6zsedtgusjns7p");
+    println!("bc1qwhzzk5tx07592vkf97rt8x8v0zdntad8lexnrgv3gdmecg8pfmhqzceedl");
     println!();
     println!("Ethereum (ETH):");
     println!("0x2d92f9e4d8ac7effa9cd7cd5eccd364cac7c201b");
